@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CounterController extends GetxController {
   RxInt Counter = 0.obs;
@@ -15,8 +17,12 @@ class CounterController extends GetxController {
 
 class ModifierController extends GetxController {
   var modifierEditingController = TextEditingController();
-  RxList textControllers = <TextEditingController>[].obs;
-  RxList text2Controllers = <TextEditingController>[].obs;
+  RxList textControllers = <TextEditingController>[
+    TextEditingController(),
+  ].obs;
+  RxList text2Controllers = <TextEditingController>[
+    TextEditingController(),
+  ].obs;
   RxInt textFieldCount = 1.obs;
   RxInt text2FieldCount = 1.obs;
 
@@ -50,4 +56,30 @@ class ModifierController extends GetxController {
     }
     super.onClose();
   }
+}
+
+class ImagePicker extends GetxController {
+  Future<void> getLostData() async {
+    final ImagePicker picker = ImagePicker();
+    final LostDataResponse response = await picker.retrieveLostData();
+    if (response.isEmpty) {
+      return;
+    }
+    final List<XFile>? files = response.files;
+    if (files != null) {
+      _handleLostFiles(files);
+    } else {
+      _handleError(response.exception);
+    }
+  }
+
+  retrieveLostData() {}
+}
+
+class _handleError {
+  _handleError(PlatformException? exception);
+}
+
+class _handleLostFiles {
+  _handleLostFiles(List<XFile> files);
 }
