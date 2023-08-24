@@ -15,8 +15,8 @@ class CounterController extends GetxController {
 
 class ModifierController extends GetxController {
   var modifierEditingController = TextEditingController();
-  var textControllers = <TextEditingController>[].obs;
-  var text2Controllers = <TextEditingController>[].obs;
+  RxList textControllers = <TextEditingController>[].obs;
+  RxList text2Controllers = <TextEditingController>[].obs;
   RxInt textFieldCount = 1.obs;
   RxInt text2FieldCount = 1.obs;
 
