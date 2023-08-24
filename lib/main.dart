@@ -39,6 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
     var width = Get.width;
     var height = Get.height;
     return Scaffold(
+      backgroundColor: Colors.grey.shade300,
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
         centerTitle: true,
