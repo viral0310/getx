@@ -69,3 +69,45 @@ class ImagePickerController extends GetxController {
     }
   }
 }
+
+class LoginController extends GetxController {
+  RxBool obscureText = true.obs;
+
+  BoolValue() {
+    obscureText.value = !obscureText.value;
+  }
+}
+
+class EmailController extends GetxController {
+  var emailError = ''.obs;
+
+  void validateEmail(String value) {
+    if (value.isEmpty) {
+      emailError.value = 'Please enter an email address';
+    } else {
+      // Use a regular expression for email validation
+      String pattern = r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$';
+      RegExp regex = RegExp(pattern);
+
+      if (!regex.hasMatch(value)) {
+        emailError.value = 'Please enter a valid email address';
+      } else {
+        emailError.value = '';
+      }
+    }
+  }
+}
+
+class PasswordController extends GetxController {
+  var passwordError = ''.obs;
+
+  void validatePassword(String value) {
+    if (value.isEmpty) {
+      passwordError.value = 'Please enter a password';
+    } else if (value.length < 6) {
+      passwordError.value = 'Password must be at least 6 characters long';
+    } else {
+      passwordError.value = '';
+    }
+  }
+}
