@@ -106,8 +106,28 @@ class PasswordController extends GetxController {
       passwordError.value = 'Please enter a password';
     } else if (value.length < 6) {
       passwordError.value = 'Password must be at least 6 characters long';
+    } else if (!_hasUppercase(value)) {
+      passwordError.value =
+          'Password must contain at least one uppercase letter';
+    } else if (!_hasLowercase(value)) {
+      passwordError.value =
+          'Password must contain at least one lowercase letter';
+    } else if (!_hasSpecialSymbol(value)) {
+      passwordError.value = 'Password must contain at least one special symbol';
     } else {
       passwordError.value = '';
     }
+  }
+
+  bool _hasUppercase(String value) {
+    return value.contains(RegExp(r'[A-Z]'));
+  }
+
+  bool _hasLowercase(String value) {
+    return value.contains(RegExp(r'[a-z]'));
+  }
+
+  bool _hasSpecialSymbol(String value) {
+    return value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
   }
 }

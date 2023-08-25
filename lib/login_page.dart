@@ -93,6 +93,8 @@ class _LoginPageState extends State<LoginPage> {
                 ElevatedButton(
                   onPressed: () {
                     print('Email is valid: ${emailController.emailError}');
+                    print(
+                        'Password is valid: ${passwordController.passwordError}');
                   },
                   child: const Text('Submit'),
                 ),
