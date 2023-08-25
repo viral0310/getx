@@ -54,7 +54,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextFormField(
                   onChanged: (value) {
-                    // Trigger password validation when the text changes
                     Get.find<PasswordController>().validatePassword(value);
                   },
                   obscureText: controller.obscureText.value,
