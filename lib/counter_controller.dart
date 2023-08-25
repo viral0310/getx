@@ -1,17 +1,16 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CounterController extends GetxController {
-  RxInt Counter = 0.obs;
+  RxInt counter = 0.obs;
 
   incrementCounter() {
-    Counter.value++;
+    counter.value++;
   }
 
   decrementCounter() {
-    Counter.value--;
+    counter.value--;
   }
 }
 
@@ -58,28 +57,15 @@ class ModifierController extends GetxController {
   }
 }
 
-class ImagePicker extends GetxController {
-  Future<void> getLostData() async {
-    final ImagePicker picker = ImagePicker();
-    final LostDataResponse response = await picker.retrieveLostData();
-    if (response.isEmpty) {
-      return;
-    }
-    final List<XFile>? files = response.files;
-    if (files != null) {
-      _handleLostFiles(files);
-    } else {
-      _handleError(response.exception);
+class ImagePickerController extends GetxController {
+  RxString imagePath = ''.obs;
+
+  Future<void> pickImage() async {
+    final pickedImage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (pickedImage != null) {
+      imagePath.value = pickedImage.path.toString();
     }
   }
-
-  retrieveLostData() {}
-}
-
-class _handleError {
-  _handleError(PlatformException? exception);
-}
-
-class _handleLostFiles {
-  _handleLostFiles(List<XFile> files);
 }
