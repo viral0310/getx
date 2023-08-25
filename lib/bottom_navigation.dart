@@ -23,15 +23,18 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[currentIndex.value], // Use value of currentIndex
+      backgroundColor: Colors.grey.shade300,
+      body: _pages[currentIndex.value],
       bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Colors.black,
+        fixedColor: Colors.deepPurple,
         backgroundColor: const Color(0xff5654a2),
         elevation: double.maxFinite,
         currentIndex: currentIndex.value,
         onTap: (index) {
           currentIndex.value = index;
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
