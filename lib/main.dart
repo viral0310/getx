@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:getx/bottom_navigation.dart';
 import 'package:getx/counter_controller.dart';
 import 'package:getx/login_page.dart';
+import 'package:getx/settingPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: BottomNavBar(),
+      home: ImageLoadingScreen(),
     );
   }
 }

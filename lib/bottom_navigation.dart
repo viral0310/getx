@@ -14,10 +14,10 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   final RxInt currentIndex = 0.obs;
   final List<Widget> _pages = [
-    MyHomePage(),
-    LoginPage(),
-    PickImage(),
-    SettingsPage(),
+    const MyHomePage(),
+    const LoginPage(),
+    const PickImage(),
+    ImageLoadingScreen(),
   ];
 
   @override
